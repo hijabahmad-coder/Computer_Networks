@@ -1,179 +1,231 @@
-# Packet Sniffer
 ```markdown
-# Network Traffic Monitor
+# 📡 Packet Sniffer - Network Traffic Monitor
 
-A lightweight network traffic monitoring and analysis tool with web-based interface. Supports both CSV data analysis and live packet capture.
+![Python](https://img.shields.io/badge/Python-3.8+-blue)
+![Flask](https://img.shields.io/badge/Flask-2.0+-green)
+![License](https://img.shields.io/badge/License-MIT-yellow)
 
-## 📋 Requirements Fulfilled
+A real-time network traffic monitoring web application built with **Flask** and **Python**. Capture, analyze, and visualize network packets through an intuitive web dashboard.
 
-| Requirement | Status |
-|-------------|--------|
-| Start/Stop Monitoring | ✅ |
-| Display Table for Network Data | ✅ |
-| Log/Record Display Section | ✅ |
-| Basic Statistics Section | ✅ |
-| Filter (Protocol, Source IP, Destination IP) | ✅ |
-| Reset/Clear Filter Button | ✅ |
-| Service Column (Port Mapping) | ✅ |
-| CSV Dataset Support | ✅ |
-| Live Packet Sniffing | ✅ (Bonus) |
+---
 
-## 🚀 Features
+## ✨ Features
 
-- 📁 **CSV Mode** - Load and analyze pre-recorded packet data
-- 🔴 **Live Capture Mode** - Real-time packet sniffing using Scapy
-- 🎛️ **Packet Filtering** - By Protocol (TCP/UDP/ICMP), Source IP, Destination IP
-- 📊 **Statistics** - Total packets, protocol breakdown, average packet size
-- 🔌 **Port-to-Service Mapping** - HTTP(80), HTTPS(443), DNS(53), SSH(22), MySQL(3306), and more
-- 🎮 **Start/Stop Control** - Toggle monitoring on/off
-- 🌐 **Web Interface** - Clean, responsive HTML/CSS dashboard
+- 🔍 **Real-time Packet Capture** - Monitor network traffic live
+- 📊 **Traffic Analytics** - View statistics and patterns
+- 📁 **CSV Data Support** - Export/Import traffic data
+- 🎨 **Interactive Dashboard** - User-friendly web interface
+- ⚡ **Lightweight** - Minimal resource usage
+- 🔒 **Safe Monitoring** - Passive packet analysis
+
+---
 
 ## 🛠️ Tech Stack
 
-| Layer | Technology |
-|-------|------------|
-| Backend | Python + Flask |
-| Packet Capture | Scapy |
-| Frontend | HTML5, CSS3 |
-| Templating | Jinja2 |
-| Data Format | CSV |
+| Technology | Purpose |
+|------------|---------|
+| Python 3.8+ | Backend logic |
+| Flask | Web framework |
+| Pandas | Data processing |
+| Scapy | Packet capture |
+| HTML/CSS | Frontend interface |
 
-## 📋 Prerequisites
-
-- Python 3.7 or higher
-- pip package manager
-- Administrator/root privileges (for Live Capture Mode only)
-
-## 🔧 Installation
-
-```bash
-# Clone the repository
-git clone https://github.com/hijabahmad-coder/network-traffic-monitor.git
-cd network-traffic-monitor
-
-# Install dependencies
-pip install flask scapy
-```
-
-## 💻 Usage
-
-### Start the Application
-
-```bash
-python app.py
-```
-
-Open your browser and navigate to: **http://127.0.0.1:5000**
-
-### CSV Mode (No admin rights needed)
-
-1. Click **"CSV Mode"** button
-2. Click **"START"** button
-3. View packets from `data.csv` file
-4. Apply filters or view statistics
-
-### Live Capture Mode (Requires Administrator)
-
-**Windows:** Run Command Prompt as Administrator
-**Linux/Mac:** Run with `sudo`
-
-```bash
-# Windows (Admin CMD)
-python app.py
-
-# Linux/Mac
-sudo python app.py
-```
-
-Then:
-1. Click **"Live Capture Mode"** button
-2. Click **"START"** button
-3. Generate network traffic (e.g., `ping google.com -t`)
-4. Watch packets appear in real-time
-5. Click **"STOP"** to end capture
-
-## 📊 Dataset Format (data.csv)
-
-| Field | Type | Description |
-|-------|------|-------------|
-| Time | String | Timestamp (HH:MM:SS) |
-| Source IP | String | Sender IPv4 address |
-| Destination IP | String | Receiver IPv4 address |
-| Protocol | String | TCP, UDP, or ICMP |
-| Packet Size | Integer | Bytes |
-| Source Port | Integer | Ephemeral port |
-| Destination Port | Integer | Well-known port |
-
-### Sample Record
-
-```csv
-Time,Source IP,Destination IP,Protocol,Packet Size,Source Port,Destination Port
-10:35:21,192.168.1.5,8.8.8.8,TCP,512,52341,80
-```
-
-## 🗺️ Port-to-Service Mapping
-
-| Port | Service | Port | Service |
-|------|---------|------|---------|
-| 80 | HTTP | 443 | HTTPS |
-| 53 | DNS | 22 | SSH |
-| 25 | SMTP | 21 | FTP |
-| 3306 | MySQL | 5432 | PostgreSQL |
-| 8080 | HTTP-Alt | 110 | POP3 |
-| 143 | IMAP | - | - |
+---
 
 ## 📁 Project Structure
 
 ```
-network-traffic-monitor/
-│
-├── app.py              # Flask backend + packet processing
-├── data.csv            # Pre-recorded packet dataset
-├── templates/
-│   └── index.html      # Web interface template
-└── README.md           # This file
+Packet-Sniffer/
+└── network_monitor/
+    ├── assets/          # CSS, JS, images
+    ├── templates/       # HTML files
+    │   └── index.html   # Main dashboard
+    ├── data.csv         # Traffic data storage
+    ├── app.py           # Main application
+    └── README.md        # Documentation
 ```
-
-## 🧪 Testing Live Capture
-
-1. Run application as Administrator
-2. Select **Live Capture Mode**
-3. Click **START**
-4. Open Command Prompt and run: `ping google.com -t`
-5. Switch back to browser - ICMP packets will appear
-6. Press `Ctrl+C` in CMD to stop ping
-7. Click **STOP** in browser
-
-## ⚠️ Important Notes
-
-- **Live Capture Mode** requires administrator/root privileges
-- CSV Mode works without any special permissions
-- Live capture stores last 100 packets for performance
-- Filter works on captured packets (stop capture, then filter)
-
-## 📸 Screenshots
-
-| Mode | Description |
-|------|-------------|
-| CSV Mode | Static data from data.csv file |
-| Live Mode | Real-time packets from network interface |
-| Filter | Filter by protocol, source/destination IP |
-| Statistics | Total packets, protocol breakdown, avg size |
-
-## 🤝 Contributing
-
-Contributions, issues, and feature requests are welcome!
-
-## 📝 Author
-
-**Hijab Ahmad**
-
-- GitHub: [@hijabahmad-coder](https://github.com/hijabahmad-coder)
-## 📄 License
-
-This project is for educational purposes as part of Computer Networks course.
 
 ---
 
-⭐ Star this repository if you found it useful!
+## 🚀 Installation & Setup
 
+### Prerequisites
+- Python 3.8 or higher
+- pip (Python package manager)
+- Administrator/root privileges (for packet capture)
+
+### Step 1: Clone the Repository
+```bash
+git clone https://github.com/hijabahmad-coder/Packet-Sniffer.git
+cd Packet-Sniffer/network_monitor
+```
+
+### Step 2: Create Virtual Environment (Optional but Recommended)
+```bash
+# Windows
+python -m venv venv
+venv\Scripts\activate
+
+# Linux/Mac
+python3 -m venv venv
+source venv/bin/activate
+```
+
+### Step 3: Install Dependencies
+```bash
+pip install flask pandas scapy
+```
+
+Or if you have requirements.txt:
+```bash
+pip install -r requirements.txt
+```
+
+### Step 4: Run the Application
+```bash
+python app.py
+```
+
+### Step 5: Open in Browser
+Navigate to: `http://127.0.0.1:5000`
+
+---
+
+## 📖 Usage Guide
+
+1. **Start the server** - Run `python app.py`
+2. **Open dashboard** - Go to `http://localhost:5000`
+3. **Start capture** - Click "Start Monitoring" button
+4. **View statistics** - See live packet data
+5. **Export data** - Save traffic logs to CSV
+
+---
+
+## 📊 CSV Data Format
+
+The `data.csv` file stores captured traffic with following columns:
+
+| Column | Description |
+|--------|-------------|
+| timestamp | Time of capture |
+| src_ip | Source IP address |
+| dst_ip | Destination IP address |
+| protocol | Protocol (TCP/UDP/ICMP) |
+| length | Packet size in bytes |
+| info | Additional information |
+
+---
+
+## 🔧 Configuration
+
+You can modify these settings in `app.py`:
+
+```python
+# Change network interface
+interface = "eth0"  # Windows: "Wi-Fi" or "Ethernet"
+
+# Change port
+app.run(debug=True, port=5000)
+
+# Update CSV path
+CSV_FILE = "data.csv"
+```
+
+---
+
+## ⚠️ Important Notes
+
+- 🔐 **Administrator privileges** required for packet capture
+- 🌐 Only monitors traffic on your local network interface
+- 📡 Does not capture encrypted packet payloads
+- 🛡️ For educational purposes only
+
+---
+
+## 🐛 Troubleshooting
+
+### Error: "No module named 'flask'"
+```bash
+pip install flask
+```
+
+### Error: "Permission denied" (Linux/Mac)
+```bash
+sudo python app.py
+```
+
+### Error: "Network interface not found"
+- Check your network adapter name
+- Update `interface` variable in `app.py`
+
+### Port 5000 already in use
+```bash
+# Change port in app.py
+app.run(port=5001)
+```
+
+---
+
+## 📝 To-Do / Future Improvements
+
+- [ ] Add real-time graphs
+- [ ] Email alerts for suspicious traffic
+- [ ] Mobile-responsive design
+- [ ] Dark mode support
+- [ ] Export to PCAP format
+- [ ] Multi-interface support
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome! Feel free to:
+- Report bugs
+- Suggest features
+- Submit pull requests
+
+---
+
+## 📄 License
+
+This project is licensed under the **MIT License** - see below:
+
+```
+MIT License
+
+Copyright (c) 2026 hijabahmad-coder
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files...
+```
+
+---
+
+## 👨‍💻 Author
+
+**Hijab Ahmad**  
+- GitHub: [@hijabahmad-coder](https://github.com/hijabahmad-coder)
+
+---
+
+## ⭐ Show Your Support
+
+If you found this project helpful, please give it a ⭐ on GitHub!
+
+---
+
+## 📚 Resources
+
+- [Flask Documentation](https://flask.palletsprojects.com/)
+- [Scapy Documentation](https://scapy.readthedocs.io/)
+- [Python Network Programming](https://realpython.com/python-networking/)
+
+---
+
+**Happy Monitoring! 📡**
+```
+
+
+**Ye README aapke repo ko aur bhi professional banayega!** 🎯
+
+Koi change chahiye? Jaise apna name, project details, ya specific features add karne hain to batao!
